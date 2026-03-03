@@ -1,28 +1,59 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(HomePage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    String title = 'Aplikasi Pertamaku';
-    String Name = ' Yogi Sugiman';
-    String message = 'Halo nama saya$Name, selamat datang di $title';
-
+class HomePage extends StatelessWidget {
+  build(context) {
     return MaterialApp(
-      title: title,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 97, 34, 255),
-          title: Text(title),
+          backgroundColor: Colors.red[800],
+          leading: Icon(Icons.home),
+          title: Text('Aplikasi Pertamaku'),
         ),
-        body: Center(
-          child: Text(message),
+        body: Container(
+          margin: EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Row(children: [Icon(Icons.archive), Text("Artikel Baru")]),
+              Card(
+                child: Column(
+                  children: [
+                    Image.network('https://picsum.photos/200/300'),
+                    Text("Judul Artikel Baru"),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                children: [
+                  Text(
+                    'Komentar',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              ListView(
+                shrinkWrap: true,
+                children: [
+                  Card(
+                    child: Padding(
+                      padding: EdgeInsets.all(3),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Jhon Doe'),
+                          Text('Lorem Ipsum adnvklji kaekj,'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
